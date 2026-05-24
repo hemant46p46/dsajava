@@ -1,7 +1,9 @@
 package dsajava.hp.arrays.easy;
 
+import java.util.Arrays;
+
 public class HelloArray {
-	public static void main(String[] args) {
-		System.out.println("Hello");
+	protected void printArray(int[] arr) {
+		Arrays.stream(arr).forEach(System.out::println);
 	}
 }
