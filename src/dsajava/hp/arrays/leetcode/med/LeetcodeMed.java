@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import dsajava.hp.utility.Utility;
+
 public class LeetcodeMed {
 /*
  * 1. Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such 
@@ -145,4 +147,27 @@ public class LeetcodeMed {
     }
     
 
+/*
+ * 4. Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ */
+    protected List<List<Integer>> permute(int[] nums){
+		List<List<Integer>> res = new ArrayList<>();
+		bktUlt(nums, 0, res);
+		return res;
+	}
+	private void bktUlt(int[] nums, int start, List<List<Integer>> res) {
+		if(start == nums.length) {
+			List<Integer> per = new ArrayList<>(nums.length);
+			for(int n:nums) {
+				per.add(n);
+			}
+			res.add(per);
+			return;
+		}
+		for(int i=start; i<nums.length; i++) {
+			Utility.swap(nums, start, i);
+			bktUlt(nums, start+1, res);
+			Utility.swap(nums, start, i);
+		}
+	}
 }
